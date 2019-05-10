@@ -38,12 +38,17 @@ class _backgroundColors {
 class _CalculatorState extends State<Calculator> {
   String text = '0';
   String result = '';
-  double number1 = 0.0;
-  double number2 = 0.0;
-  String operand = '';
 
   void _calculate(buttonText) {
+    if (buttonText == 'C' || buttonText == '=') {
+      result = '0';
+    } else {
+      result = text + buttonText;
+    }
 
+    setState(() {
+      text = result;
+    });
   }
 
   Widget roundButton(buttonText, Color textColor, Color backgroundColor) {
